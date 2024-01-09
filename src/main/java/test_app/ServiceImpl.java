@@ -76,4 +76,24 @@ public class ServiceImpl implements Service{
         }
         return n;
     }
+
+    @Override
+    public boolean placeOrder(Order order) {
+        boolean sts = false;
+        int n = 0;
+        try {
+            CallableStatement cstmt = conn.prepareCall("{call placeOrder(?,?,?,?)}");
+            cstmt.setString(1,order.getCustName());
+            cstmt.setInt(2,order.getProduct_id());
+            cstmt.setInt(3,order.getOrder_qty());
+            cstmt.registerOutParameter(4, Types.BOOLEAN);
+            cstmt.execute();
+            sts = cstmt.getBoolean(4);
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return sts;
+    }
+
+
 }

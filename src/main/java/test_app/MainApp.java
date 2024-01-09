@@ -45,8 +45,20 @@ public class MainApp {
 
     private static void placeOrder() {
 
+        System.out.println("Enter Name");
+        String name = sc.next();
+        System.out.println("Enter product Id");
+        int proId = sc.nextInt();
+        System.out.println("Enter Order Quantity");
+        int orderQty = sc.nextInt();
+        Order order = new Order(name, proId, orderQty);
+        boolean sts = service.placeOrder(order);
+        if (sts) {
+            System.out.println("Order placed");
+        } else {
+            System.out.println("Order Not Placed");
+        }
     }
-
     private static void updateProduct() {
         System.out.println("Enter Product Name");
         String proName=sc.next();

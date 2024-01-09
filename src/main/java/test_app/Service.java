@@ -9,4 +9,6 @@ public interface Service {
     int removeProduct(int proId);
 
     int updateProduct(String proName, int proQty, double proPrice);
+
+    boolean placeOrder(Order order);
 }
