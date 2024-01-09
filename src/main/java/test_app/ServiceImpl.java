@@ -95,5 +95,31 @@ public class ServiceImpl implements Service{
         return sts;
     }
 
+    @Override
+    public List<Order> orderList() {
+
+        String orderDisplay="select customer_name,order_qty,total_amt from order_info";
+        List<Order> orderList=new ArrayList<>();
+
+        try {
+            Statement stmt= conn.createStatement();
+            ResultSet rs= stmt.executeQuery(orderDisplay);
+
+            while (rs.next())
+            {
+                String customerName=rs.getString("customer_name");
+                int orderQty=rs.getInt("order_qty");
+                double total_amt=rs.getDouble("total_amt");
+
+                Order order=new Order(customerName,orderQty,total_amt);
+                orderList.add(order);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        return orderList;
+    }
+
 
 }

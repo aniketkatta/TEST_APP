@@ -34,13 +34,25 @@ public class MainApp {
                 placeOrder();
                 break;
             case 5:
-                //displayAllOrder();
+                displayAllOrder();
                 break;
             default:
                 System.out.println("Invalid Option");
                 break;
         }
         main(args);
+    }
+
+    private static void displayAllOrder() {
+        System.out.println("Enter Customer Name");
+        String customer_name=sc.next();
+
+        List<Order> orderlist=service.orderList();
+        System.out.println("CustomerName \t\t\t OrderQTY \t\t\t TotalAmount");
+        for (Order o:orderlist)
+        {
+            System.out.println(o.getCustName()+"\t\t\t\t\t"+o.getOrder_qty()+"\t\t\t\t\t"+o.getTotal_amt()+"");
+        }
     }
 
     private static void placeOrder() {
@@ -84,9 +96,10 @@ public class MainApp {
     private static void displayAllProduct() {
 
         List<Product> productList=service.displayAllProduct();
+        System.out.println("ProductId \t\t\t ProductName \t\t\t  ProductQty \t\t\t ProductPrice");
         for (Product p:productList)
         {
-            System.out.println(p.getProductId()+"  "+p.getProductName()+"   "+p.getProductQty()+"   "+p.getProductPrice());
+            System.out.println(p.getProductId()+"\t\t\t\t\t"+p.getProductName()+"\t\t\t\t\t"+p.getProductQty()+"\t\t\t\t\t"+p.getProductPrice());
         }
     }
 

@@ -11,4 +11,6 @@ public interface Service {
     int updateProduct(String proName, int proQty, double proPrice);
 
     boolean placeOrder(Order order);
+
+    List<Order> orderList();
 }
