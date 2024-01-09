@@ -64,8 +64,8 @@ public class MainApp {
         System.out.println("Enter Order Quantity");
         int orderQty = sc.nextInt();
         Order order = new Order(name, proId, orderQty);
-        boolean sts = service.placeOrder(order);
-        if (sts) {
+        boolean n = service.placeOrder(order);
+        if (n) {
             System.out.println("Order placed");
         } else {
             System.out.println("Order Not Placed");
